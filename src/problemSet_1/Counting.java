@@ -31,6 +31,6 @@ public class Counting {
 	}
 }
 
-//Time Complexity = O(2n + k)  when we know MAX_RANGE. Otherwise O(3n + k) which includes getting maxValue
+//Time Complexity = O(2n + k)  when we know MAX_RANGE. Otherwise O(3n + k) which includes getting maxValue  ~~ O(max(n, k))
 // Space Complexity = O(n + k)
 // k = MAX_RANGE

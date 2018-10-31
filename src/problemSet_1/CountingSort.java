@@ -10,7 +10,8 @@ public class CountingSort {
 		for(int i = 1; i < temp.length; i++)
 			temp[i] = temp[i] +temp[i-1];
 		for(int i = 0; i<input.length; i++)
-			result[i] = temp[input[i]]--;
+			result[ -- temp[input[i]]] = input[i];
+			//result[i] = temp[input[i]]--;
 		
 		return result;
 	}
