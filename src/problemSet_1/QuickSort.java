@@ -6,7 +6,49 @@ import java.util.Scanner;
 // Time complexity - O(n log n)
 // Space complexity - O(log n)
 public class QuickSort {
-	
+
+	// PARTITIONING LOGIC
+	// ANY VALUE WHICH IS LESS THAN PIVOT SHOULD BE LEFT OF PINDEX
+	// PINDEX WILL KEEP INCREMENTING AS MANY VALUES WHICH ARE LESSER THAN PIVOT
+	// PIVOT WILL BE COMPARED COUNTER I. IF COUNTER VALUE IS LESS THAN PIVOT, SWAP COUNTER VALUE WITH PINDEX VALUE, INCREMENT PINDEX.
+
+
+	private static void quickSort2(int[] arr, int start, int end) {
+		if (start >= end) {
+			return;
+		}
+
+		int pIndex = partition2(arr, start, end);       // C1.n
+		quickSort2(arr, start, pIndex-1);          // T(n/2)
+		quickSort2(arr, pIndex+1, end);           // T(n/2)
+	}
+
+	private static int partition2(int[] arr, int start, int end) {
+		int pivotIndex = new Random().nextInt(end - start) + start;
+		swap(arr, pivotIndex, end);
+		int pivot = arr[end];
+		int pIndex = start;
+
+		for (int i = start; i < end; i++ ) {                     // C1.n times
+			if (arr[i] < pivot) {
+				swap(arr, pIndex, i);
+				pIndex++;
+			}
+		}
+		swap(arr, pIndex, end);
+		return pIndex;
+	}
+
+
+
+
+
+
+
+
+
+
+
 	public static void swap(int[] arr, int i, int j){
 		int temp = arr[i];
 		arr[i] = arr[j];
@@ -48,7 +90,7 @@ public class QuickSort {
 			arr[i] = in.nextInt();
 		in.close();
 		
-		quickSort(arr, 0, size-1);	
+		quickSort2(arr, 0, size-1);
 		
 		//System.out.println("Final array :- ");
 		for(int i = 0; i<size; i++)
